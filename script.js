@@ -26,7 +26,7 @@ $(document).ready(function () {
             ans.text(calcField);
         };
 
-    //Object Knop creator
+    //knopjes drukken functie
 	function Knop(jQ,autoReset) {
         jQ.click(function () {
 	        if (calcField === "0") {
@@ -45,21 +45,12 @@ $(document).ready(function () {
 	}
 
     //knopjesss
-	Knop($("#een"), true);
-	Knop($("#twee"), true);
-	Knop($("#drie"), true);
-	Knop($("#vier"), true);
-	Knop($("#vijf"), true);
-	Knop($("#zes"), true);
-	Knop($("#zeven"), true);
-	Knop($("#acht"), true);
-	Knop($("#negen"), true);
-	Knop($("#nul"), true);
-	Knop($("#punt"), true);
-	Knop($("#delen"), false);
-	Knop($("#keer"), false);
-	Knop($("#min"), false);
-	Knop($("#plus"), false);
+	$(".numberBtn").each(function () {
+        Knop($(this),true)
+	});
+	$(".functionBtn").each(function () {
+        Knop($(this),false)
+	});
     var is      = $("#is"),
         reset   = $("#c")
 
