@@ -14,7 +14,6 @@ $(document).ready(function () {
     //hier komt de calculator logica
     //calculator var
 	var ans             = $("#antwoord"),
-        calcArrField    = $("#calcArrField"),
         calcArr         = [],
 	    calcField       = "0",
         isPressed       = false,
@@ -36,7 +35,6 @@ $(document).ready(function () {
 	        calcArr.push(jQ.text());
 	        calcField += calcArr[calcArr.length - 1];
 	        ans.text(calcField);
-	        calcArrField.text(calcArr);
 	        isPressed = false;
 	    });
 	}
@@ -54,7 +52,6 @@ $(document).ready(function () {
         calcField = calcField.replace(/[^-()\d/*+.]/g, '');
         calcField = Math.round(eval(calcField) * 10000) / 10000;
         ans.text(calcField);
-        calcArrField.text(calcArr);
         isPressed = true;
     });
     //reset
