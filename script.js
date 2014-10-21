@@ -51,7 +51,7 @@ $(document).ready(function () {
         reset   = $("#c")
     //Rekenen maar!
     is.click(function () {
-        calcField.replace(/[^-()\d/*+.]/g, '');
+        calcField = calcField.replace(/[^-()\d/*+.]/g, '');
         calcField = Math.round(eval(calcField) * 10000) / 10000;
         ans.text(calcField);
         calcArrField.text(calcArr);
