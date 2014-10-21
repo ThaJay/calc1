@@ -32,11 +32,9 @@ $(document).ready(function () {
 	        if (calcField === "0") {
 	            calcField = ""
 	        };
-	        if (autoReset) {
-	            if (isPressed) {
-	                rst();
-	                calcField = ""
-	            }
+	        if (autoReset && isPressed) {
+	            rst();
+	            calcField = ""
 	        };
 	        calcArr.push(jQ.text());
 	        calcField += calcArr[calcArr.length - 1];
