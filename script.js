@@ -56,23 +56,23 @@ $(document).ready(function () {
 	    });
 	}
 
-    //knopjes var
-    var een     = new nummerKnop($("#een")),
-        twee    = new nummerKnop($("#twee")),
-        drie    = new nummerKnop($("#drie")),
-        vier    = new nummerKnop($("#vier")),
-        vijf    = new nummerKnop($("#vijf")),
-        zes     = new nummerKnop($("#zes")),
-        zeven   = new nummerKnop($("#zeven")),
-        acht    = new nummerKnop($("#acht")),
-        negen   = new nummerKnop($("#negen")),
-        nul     = new nummerKnop($("#nul")),
-        punt    = new nummerKnop($("#punt")),
-        delen   = new functieKnop($("#delen")),
-        keer    = new functieKnop($("#keer")),
-        min     = new functieKnop($("#min")),
-        plus    = new functieKnop($("#plus")),
-        is      = $("#is"),
+    //knopjesss
+    nummerKnop($("#een")),
+    nummerKnop($("#twee")),
+    nummerKnop($("#drie")),
+    nummerKnop($("#vier")),
+    nummerKnop($("#vijf")),
+    nummerKnop($("#zes")),
+    nummerKnop($("#zeven")),
+    nummerKnop($("#acht")),
+    nummerKnop($("#negen")),
+    nummerKnop($("#nul")),
+    nummerKnop($("#punt")),
+    functieKnop($("#delen")),
+    functieKnop($("#keer")),
+    functieKnop($("#min")),
+    functieKnop($("#plus")),
+    var is      = $("#is"),
         reset   = $("#c")
 
     //Rekenen maar!
