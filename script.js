@@ -14,11 +14,9 @@ $(document).ready(function () {
     //hier komt de calculator logica
     //calculator var
 	var ans             = $("#antwoord"),
-        calcArr         = [],
 	    calcField       = "0",
         isPressed       = false,
         rst             = function () {
-            calcArr = [];
             calcField = "0";
             ans.text(calcField);
         };
@@ -32,8 +30,7 @@ $(document).ready(function () {
 	            rst();
 	            calcField = ""
 	        };
-	        calcArr.push(jQ.text());
-	        calcField += calcArr[calcArr.length - 1];
+	        calcField += jQ.text();
 	        ans.text(calcField);
 	        isPressed = false;
 	    });
