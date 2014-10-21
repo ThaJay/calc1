@@ -27,12 +27,12 @@ $(document).ready(function () {
         };
 
     //Object Knop creator
-	function Knop(jQ,decimButton) {
+	function Knop(jQ,autoReset) {
         jQ.click(function () {
 	        if (calcField === "0") {
 	            calcField = ""
 	        };
-	        if (decimButton) {
+	        if (autoReset) {
 	            if (isPressed) {
 	                rst();
 	                calcField = ""
