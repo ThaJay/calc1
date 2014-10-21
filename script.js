@@ -27,27 +27,17 @@ $(document).ready(function () {
         };
 
     //Object Knop creator
-	function nummerKnop(jQ) {
+	function Knop(jQ,a) {
         jQ.click(function () {
 	        if (calcField === "0") {
 	            calcField = ""
 	        };
-	        if (isPressed) {
-	            rst();
-	            calcField = ""
+	        if(a){
+	            if (isPressed) {
+	                rst();
+	                calcField = ""
+	            }
 	        };
-	        calcArr.push(jQ.text());
-	        calcField += calcArr[calcArr.length - 1];
-	        ans.text(calcField);
-	        calcArrField.text(calcArr);
-	        isPressed = false;
-	    });
-	}
-	function functieKnop(jQ) {
-	    jQ.click(function () {
-	        if (calcField === "0") {
-	            calcField = ""
-	        }
 	        calcArr.push(jQ.text());
 	        calcField += calcArr[calcArr.length - 1];
 	        ans.text(calcField);
@@ -57,21 +47,21 @@ $(document).ready(function () {
 	}
 
     //knopjesss
-	nummerKnop($("#een"));
-    nummerKnop($("#twee"));
-    nummerKnop($("#drie"));
-    nummerKnop($("#vier"));
-    nummerKnop($("#vijf"));
-    nummerKnop($("#zes"));
-    nummerKnop($("#zeven"));
-    nummerKnop($("#acht"));
-    nummerKnop($("#negen"));
-    nummerKnop($("#nul"));
-    nummerKnop($("#punt"));
-    functieKnop($("#delen"));
-    functieKnop($("#keer"));
-    functieKnop($("#min"));
-    functieKnop($("#plus"));
+	Knop($("#een"), true);
+	Knop($("#twee"), true);
+	Knop($("#drie"), true);
+	Knop($("#vier"), true);
+	Knop($("#vijf"), true);
+	Knop($("#zes"), true);
+	Knop($("#zeven"), true);
+	Knop($("#acht"), true);
+	Knop($("#negen"), true);
+	Knop($("#nul"), true);
+	Knop($("#punt"), true);
+	Knop($("#delen"), false);
+	Knop($("#keer"), false);
+	Knop($("#min"), false);
+	Knop($("#plus"), false);
     var is      = $("#is"),
         reset   = $("#c")
 
