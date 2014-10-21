@@ -46,10 +46,16 @@ $(document).ready(function () {
         reset   = $("#c")
     //Rekenen maar!
     is.click(function () {
-        calcField = calcField.replace(/[^-()\d/*+.]/g, '');
-        calcField = Math.round(eval(calcField) * 10000) / 10000;
-        ans.text(calcField);
-        isPressed = true;
+        if (calcField[0] === "*" | calcField[0] === "/") {
+            ans.text("invalid");
+            isPressed = true;
+        }
+        else {
+            calcField = calcField.replace(/[^-()\d/*+.]/g, '');
+            calcField = Math.round(eval(calcField) * 10000) / 10000;
+            ans.text(calcField);
+            isPressed = true;
+        };
     });
     //reset
     reset.click(function () {
