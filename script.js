@@ -57,21 +57,21 @@ $(document).ready(function () {
 	}
 
     //knopjesss
-    nummerKnop($("#een")),
-    nummerKnop($("#twee")),
-    nummerKnop($("#drie")),
-    nummerKnop($("#vier")),
-    nummerKnop($("#vijf")),
-    nummerKnop($("#zes")),
-    nummerKnop($("#zeven")),
-    nummerKnop($("#acht")),
-    nummerKnop($("#negen")),
-    nummerKnop($("#nul")),
-    nummerKnop($("#punt")),
-    functieKnop($("#delen")),
-    functieKnop($("#keer")),
-    functieKnop($("#min")),
-    functieKnop($("#plus")),
+	nummerKnop($("#een"));
+    nummerKnop($("#twee"));
+    nummerKnop($("#drie"));
+    nummerKnop($("#vier"));
+    nummerKnop($("#vijf"));
+    nummerKnop($("#zes"));
+    nummerKnop($("#zeven"));
+    nummerKnop($("#acht"));
+    nummerKnop($("#negen"));
+    nummerKnop($("#nul"));
+    nummerKnop($("#punt"));
+    functieKnop($("#delen"));
+    functieKnop($("#keer"));
+    functieKnop($("#min"));
+    functieKnop($("#plus"));
     var is      = $("#is"),
         reset   = $("#c")
 
