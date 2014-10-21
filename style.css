@@ -6,7 +6,7 @@ body{
 	font-family:robotoregular;
 }
 #jumbo{
-	background-image:url('/images/jumbopic.jpg');
+	background-image:url('images/jumbopic.jpg');
 	background-attachment: fixed;
 	background-repeat: no-repeat;
 	background-position:50% 0%;
@@ -79,7 +79,7 @@ body{
 	padding-top:30px;
 }
 #middle1{
-	background-image:url("/images/Green_Lake.jpg");
+	background-image:url("images/Green_Lake.jpg");
 	background-size:cover;
 	background-position: center; 
 }
