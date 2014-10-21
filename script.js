@@ -4,7 +4,6 @@ $(document).ready(function () {
 	$(window).resize(function(){
 		$(document.body).css('padding-top', $('#topnavbalk').height() + 10);
 	});
-
     //blokken per rij gelijke hoogte maken. Is nu nog per rij gespecificeerd dus vereist nog een aanpassing.
 	$('#row1 .block').css({
 		'height': $('#row1 .block').parent().height()
@@ -12,7 +11,6 @@ $(document).ready(function () {
 	$('#row2 .block').css({
 		'height': $('#row2 .block').parent().height()
 	});
-
     //hier komt de calculator logica
     //calculator var
 	var ans             = $("#antwoord"),
@@ -25,7 +23,6 @@ $(document).ready(function () {
             calcField = "0";
             ans.text(calcField);
         };
-
     //knopjes drukken functie
 	function Knop(jQ,autoReset) {
         jQ.click(function () {
@@ -43,7 +40,6 @@ $(document).ready(function () {
 	        isPressed = false;
 	    });
 	}
-
     //knopjesss
 	$(".numberBtn").each(function () {
         Knop($(this),true)
@@ -53,7 +49,6 @@ $(document).ready(function () {
 	});
     var is      = $("#is"),
         reset   = $("#c")
-
     //Rekenen maar!
     is.click(function () {
         calcField.replace(/[^-()\d/*+.]/g, '');
