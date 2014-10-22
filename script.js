@@ -1,140 +1,152 @@
 $(document).ready(function () {
     
-    //er voor zorgen dat de pagina onder de navbar begint (werkt nog niet met verticale navbar(kleine schermen))
+        //er voor zorgen dat de pagina onder de navbar begint
     $(document.body).css('padding-top', $('#topnavbalk').height() + 10);
-	$(window).resize(function(){
+    $(window).resize(function ()
+    {
 		$(document.body).css('padding-top', $('#topnavbalk').height() + 10);
 	});
     
-    //blokken per rij gelijke hoogte maken. Is nu nog per rij gespecificeerd dus vereist nog een aanpassing.
-	$('#row1 .block').css({
+        //blokken per rij gelijke hoogte maken. Had het liever voor beide rijen in één keer gedaan, maar kreeg dan dezelfde hoogte voor beide rijen
+	$('#row1 .block').css(
+    {
 		'height': $('#row1 .block').parent().height()
 	});
-	$('#row2 .block').css({
+	$('#row2 .block').css(
+    {
 		'height': $('#row2 .block').parent().height()
 	});
     
     
 
-    //hier komt de calculator logica
+        //hier komt de calculator logica
 
-    //calculator var
+        //calculator var
     var ans             = $("#antwoord"),
         is              = $("#is"),
         reset           = $("#c"),
+        nummer          = $(".numberBtn"),
+        operator        = $(".operatorBtn"),
+        thisDoc         = $(document),
         calcField       = "0",
-        isPressed       = false,
-        rst             = function () {
-            calcField       = "0";
-            ans.text(calcField);
-        }
+        isPressed       = false
 
+        //reset
+    function rst()
+    {
+        calcField = "0";
+        ans.text(calcField);
+    }
 
-    //knopjes drukken functie
-	function Knop(jQ,autoReset) {
-        jQ.click(function () {
-	        if (calcField === "0") {
-	            calcField = ""
-	        };
-	        if (autoReset && isPressed) {
-	            rst();
-	            calcField = ""
-	        };
-	        calcField += jQ.text();
-	        ans.text(calcField);
-	        isPressed = false;
+        //naar het tekstveld!
+	function toField(nummer, autoReset)
+	{
+	    if (calcField === "0")
+	    {
+	        calcField = "";
+	    }
+	    else if (autoReset && isPressed)
+	    {
+	        rst();
+	        calcField = ""
+	    }
+
+	    calcField += nummer;
+	    ans.text(calcField);
+	    isPressed = false;
+	};
+    
+        //klik detectie en doorgeef functionaliteit
+	function Knop(jQ, autoReset) {
+	    jQ.click(function () {
+	        toField(jQ.text(), autoReset);
 	    });
 	}
-    
-    //knopjesss
-	$(".numberBtn").each(function () {
-        Knop($(this),true)
-	});
-	$(".functionBtn").each(function () {
-        Knop($(this),false)
+
+	is.click(function () {
+	    calculate();
 	});
 
-
-    //toetsenbord knopjes 
-	$(document).keypress(function (event) {
-
-	    //backspace
-	    if (event.which == 8 && calcField !== "0") {
-            if(calcField.length > 1){
-	            event.preventDefault();
-	            calcField = calcField.slice(0,(calcField.length - 1));
-	            ans.text(calcField);
-            }
-            else {
-                event.preventDefault();
-                rst();
-            }
-	    }
-        //enter
-	    else if (event.which == 13 | event.which == 187 ) {
-	        event.preventDefault();
-	        is.click();
-	    }
-        
-
-        //operators
-	    else if(
-            (event.which >= 188 && event.which <= 191) |
-            (event.which >= 106 && event.which <= 111)
-            ) {
-	        event.preventDefault();
-	        if (calcField === "0") {
-	            calcField = ""
-	        };
-	        calcField += (event.key + "");
-	        ans.text(calcField);
-	        isPressed = false;
-	    }
-        //nummers
-	    else if (
-            (event.which >= 48 && event.which <= 57) |
-            (event.which >= 96 && event.which <= 105)
-            ) {
-	        event.preventDefault();
-	        if (calcField === "0") {
-	            calcField = ""
-	        };
-	        calcField += (event.key);
-	        ans.text(calcField);
-	        isPressed = false;
-	    };
-	});
-
-//	KeyboardJS.on("1", function () {
-//	    if (calcField === "0") {
-//	        calcField = ""
-//	    };
-//	    calcField += "1";
-//	    ans.text(calcField);
-//	    isPressed = false;
-//	});
-    
-    //reset
 	reset.click(function () {
 	    rst()
 	});
+
+        //knopjesss
+	nummer.each(function () {
+	    Knop($(this), true)
+	});
+	operator.each(function () {
+	    Knop($(this), false)
+	});
+
+
+        //toetsenbord knopjes 
+	thisDoc.keydown(function (event) {
+	    var autRes = false
+        
+	        //nummers & operators
+	    if (
+            (event.which >= 48 && event.which <= 57) |
+            (event.which >= 96 && event.which <= 107) |
+            (event.which >= 109 && event.which <= 111 |
+            event.which == 189 |
+            event.which == 191)
+            )
+	    {
+            event.preventDefault();
+
+            if (
+                (event.which >= 48 && event.which <= 57) |
+                (event.which >= 96 && event.which <= 107)
+                )
+            {autRes = true;}
+            
+            toField(event.key, autRes);
+	    }
+
+	        //backspace
+	    else if (event.which == 8 && calcField !== "0")
+	    {
+	        event.preventDefault();
+
+	        if (calcField.length > 1)
+	        {
+	            calcField = calcField.slice(0, (calcField.length - 1));
+	            ans.text(calcField);
+	        }
+	        else
+	        {rst();}
+	    }
+
+	        //enter
+	    else if (event.which == 13 | event.which == 108)
+	    {
+	        event.preventDefault();
+
+	        is.click();
+	    }
+	});
+
     
-    //Rekenen maar!
-    is.click(function () {
+        //Rekenen maar!
+	function calculate()
+	{
         calcField = calcField.replace(/[.]{2,}/g, ".");
         if (
             Boolean(calcField[0].match(/[*/]/g)) |
             Boolean(calcField.match(/[+\-/*]{2,}/g)) |
             Boolean(calcField.match(/[+\-/*][.]+[+\-/*]/g))
-            ){
+            )
+        {
             ans.text("invalid");
             isPressed = true;
         }
-        else {
+        else
+        {
             calcField = calcField.replace(/[^-()\d/*+.]/g, '');
             calcField = Math.round(eval(calcField) * 1e3) / 1e3;
             ans.text(calcField);
             isPressed = true;
         };
-    });
+    };
 });
