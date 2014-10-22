@@ -16,16 +16,17 @@ $(document).ready(function () {
     
     
     //hier komt de calculator logica
+
     //calculator var
     var ans             = $("#antwoord"),
         is              = $("#is"),
         reset           = $("#c"),
-	    calcField       = "0",
+        calcField       = "0",
         isPressed       = false,
         rst             = function () {
-            calcField = "0";
+            calcField       = "0";
             ans.text(calcField);
-        }
+            }
     
     //knopjes drukken functie
 	function Knop(jQ,autoReset) {
@@ -69,7 +70,7 @@ $(document).ready(function () {
         }
         else {
             calcField = calcField.replace(/[^-()\d/*+.]/g, '');
-            calcField = Math.round(eval(calcField) * 10000) / 10000;
+            calcField = Math.round(eval(calcField) * 1e3) / 1e3;
             ans.text(calcField);
             isPressed = true;
         };
