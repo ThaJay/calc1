@@ -15,6 +15,7 @@ $(document).ready(function () {
 	});
     
     
+
     //hier komt de calculator logica
 
     //calculator var
@@ -27,6 +28,7 @@ $(document).ready(function () {
             calcField       = "0";
             ans.text(calcField);
         }
+
 
     //knopjes drukken functie
 	function Knop(jQ,autoReset) {
@@ -51,26 +53,53 @@ $(document).ready(function () {
 	$(".functionBtn").each(function () {
         Knop($(this),false)
 	});
-    //toetsenbord knopjes && calcField !== "0"
+
+
+    //toetsenbord knopjes 
 	$(document).keypress(function (event) {
-	    if (event.which == 8) {
-	        event.preventDefault();
-	        calcField = calcField.slice(0,(calcField.length - 1));
-	        ans.text(calcField);
+
+	    //backspace
+	    if (event.which == 8 && calcField !== "0") {
+            if(calcField.length > 1){
+	            event.preventDefault();
+	            calcField = calcField.slice(0,(calcField.length - 1));
+	            ans.text(calcField);
+            }
+            else {
+                event.preventDefault();
+                rst();
+            }
 	    }
-	    else if (
-            (event.which >= 48 && event.which <= 57) |
+        //enter
+	    else if (event.which == 13 | event.which == 187 ) {
+	        event.preventDefault();
+	        is.click();
+	    }
+        
+
+        //operators
+	    else if(
             (event.which >= 188 && event.which <= 191) |
-            (event.which >= 96 && event.which <= 111) |
-            event.which == 13 |
-            event.which == 16 |
-            event.which == 27
+            (event.which >= 106 && event.which <= 111)
             ) {
 	        event.preventDefault();
 	        if (calcField === "0") {
 	            calcField = ""
 	        };
 	        calcField += (event.key + "");
+	        ans.text(calcField);
+	        isPressed = false;
+	    }
+        //nummers
+	    else if (
+            (event.which >= 48 && event.which <= 57) |
+            (event.which >= 96 && event.which <= 105)
+            ) {
+	        event.preventDefault();
+	        if (calcField === "0") {
+	            calcField = ""
+	        };
+	        calcField += (event.key);
 	        ans.text(calcField);
 	        isPressed = false;
 	    };
