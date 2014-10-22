@@ -46,7 +46,7 @@ $(document).ready(function () {
         reset   = $("#c")
     //Rekenen maar!
     is.click(function () {
-        if (calcField[0] === "*" | calcField[0] === "/" | Boolean(calcField.match(/[+\-/*]{2}/g)) | Boolean(calcField.match(/[+\-/*][.]+[+\-/*]/g)) | Boolean(calcField.match(/[.]{2,}/g))) {
+        if (calcField[0] === "*" | calcField[0] === "/" | Boolean(calcField.match(/[+\-/*]{2,}/g)) | Boolean(calcField.match(/[+\-/*][.]+[+\-/*]/g)) | Boolean(calcField.match(/[.]{2,}/g))) {
             ans.text("invalid");
             isPressed = true;
         }
