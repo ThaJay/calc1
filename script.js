@@ -25,7 +25,7 @@ $(document).ready(function () {
         rst             = function () {
             calcField = "0";
             ans.text(calcField);
-        },
+        }
     
     //knopjes drukken functie
 	function Knop(jQ,autoReset) {
@@ -59,7 +59,7 @@ $(document).ready(function () {
     //Rekenen maar!
     is.click(function () {
         if (
-            calcField[0] === /[*/]/g |
+            Boolean(calcField[0].match(/[*/]/g)) |
             Boolean(calcField.match(/[+\-/*]{2,}/g)) |
             Boolean(calcField.match(/[+\-/*][.]+[+\-/*]/g)) |
             Boolean(calcField.match(/[.]{2,}/g))
