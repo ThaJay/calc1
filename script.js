@@ -26,8 +26,8 @@ $(document).ready(function () {
         rst             = function () {
             calcField       = "0";
             ans.text(calcField);
-            }
-    
+        }
+
     //knopjes drukken functie
 	function Knop(jQ,autoReset) {
         jQ.click(function () {
