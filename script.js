@@ -51,6 +51,39 @@ $(document).ready(function () {
 	$(".functionBtn").each(function () {
         Knop($(this),false)
 	});
+    //toetsenbord knopjes && calcField !== "0"
+	$(document).keypress(function (event) {
+	    if (event.which == 8) {
+	        event.preventDefault();
+	        calcField = calcField.slice(0,(calcField.length - 1));
+	        ans.text(calcField);
+	    }
+	    else if (
+            (event.which >= 48 && event.which <= 57) |
+            (event.which >= 188 && event.which <= 191) |
+            (event.which >= 96 && event.which <= 111) |
+            event.which == 13 |
+            event.which == 16 |
+            event.which == 27
+            ) {
+	        event.preventDefault();
+	        if (calcField === "0") {
+	            calcField = ""
+	        };
+	        calcField += (event.key + "");
+	        ans.text(calcField);
+	        isPressed = false;
+	    };
+	});
+
+//	KeyboardJS.on("1", function () {
+//	    if (calcField === "0") {
+//	        calcField = ""
+//	    };
+//	    calcField += "1";
+//	    ans.text(calcField);
+//	    isPressed = false;
+//	});
     
     //reset
 	reset.click(function () {
@@ -59,11 +92,11 @@ $(document).ready(function () {
     
     //Rekenen maar!
     is.click(function () {
+        calcField = calcField.replace(/[.]{2,}/g, ".");
         if (
             Boolean(calcField[0].match(/[*/]/g)) |
             Boolean(calcField.match(/[+\-/*]{2,}/g)) |
-            Boolean(calcField.match(/[+\-/*][.]+[+\-/*]/g)) |
-            Boolean(calcField.match(/[.]{2,}/g))
+            Boolean(calcField.match(/[+\-/*][.]+[+\-/*]/g))
             ){
             ans.text("invalid");
             isPressed = true;

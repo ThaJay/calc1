@@ -4,6 +4,8 @@ body{
 	background-color:#F7F7FC;
 	font-family:robotoregular;
 }
+
+
 .jumbotron{
     background-image:url('images/jumbopic.jpg');
 	background-attachment: fixed;
@@ -14,16 +16,8 @@ body{
     background-color:rgba(255,255,255,0.5);
     height:650px;
 }
-/*
-.jumbotron .container h1{
-	margin:5%;
-	margin-top:20%;
-	margin-bottom:10%;
-	color:white;
-	font-size:6em;
-	position:relative;
-}
-*/
+
+
 #calculator{
 	font-size:3em;
 	margin-top:40px;
@@ -53,6 +47,8 @@ body{
 	margin:5px;
 	border-radius:0px;
 }
+
+
 #blockContainer{
 	background-color:white;
 	height:100%;
